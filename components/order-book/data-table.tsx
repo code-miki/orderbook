@@ -300,9 +300,9 @@ export function DataTable<TData, TValue>({
       <Card className="w-full border-border/60 shadow-sm bg-card/50 backdrop-blur-sm mb-3">
         <CardHeader
           ref={cardHeaderRef as any}
-          className="sticky top-[88px] z-40 rounded-t-md bg-secondary dark:bg-background border-b border-border/60 dark:border-border/40 py-4 shadow-[0_2px_4px_rgba(0,0,0,0.06)] dark:shadow-sm"
+          className="sticky top-[88px] z-40 rounded-t-md bg-secondary dark:bg-background border-b border-border/60 dark:border-border/40 py-6 shadow-[0_2px_4px_rgba(0,0,0,0.06)] dark:shadow-sm"
         >
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mb-4">
             <CardTitle className="text-xl font-bold tracking-tight text-foreground">
               {isSearchActive ? "Order History" : showMyOrdersOnly ? "My Orders" : "Order Book"}
             </CardTitle>
