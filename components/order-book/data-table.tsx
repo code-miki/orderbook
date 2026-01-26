@@ -300,7 +300,7 @@ export function DataTable<TData, TValue>({
       <Card className="w-full border-border/60 shadow-sm bg-card/50 backdrop-blur-sm mb-3">
         <CardHeader
           ref={cardHeaderRef as any}
-          className="sticky top-[100px] z-30 rounded-t-md bg-[#E0E4E7] dark:bg-background border-b border-[#C0C4C7] dark:border-border/40 pb-4 shadow-[0_2px_4px_rgba(0,0,0,0.1)] dark:shadow-sm"
+          className="sticky top-[100px] z-40 rounded-t-md bg-secondary dark:bg-background border-b border-border/60 dark:border-border/40 pb-4 shadow-[0_2px_4px_rgba(0,0,0,0.06)] dark:shadow-sm backdrop-blur-sm"
         >
           <div className="flex items-center justify-between mb-4">
             <CardTitle className="text-xl font-bold tracking-tight text-foreground">
@@ -313,13 +313,13 @@ export function DataTable<TData, TValue>({
                 onOpenChange={setSearchPopoverOpen}
               >
                 <PopoverTrigger asChild>
-                  <Button variant="outline" size="sm" className="h-9 w-full min-[550px]:w-auto gap-2 bg-[#E0E4E7] hover:bg-[#D0D4D7] border-[#C0C4C7] dark:bg-background/80 dark:hover:bg-muted dark:border-border/60">
+                  <Button variant="outline" size="sm" className="h-9 w-full min-[550px]:w-auto gap-2 bg-secondary/50 hover:bg-secondary border-border/60 dark:bg-background/80 dark:hover:bg-muted dark:border-border/60">
                     <Search className="h-4 w-4" />
                     Search Order
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent
-                  className="w-[480px] max-w-[calc(100vw-2rem)] min-[550px]:w-[480px] bg-[#E0E4E7] dark:bg-background"
+                  className="w-[480px] max-w-[calc(100vw-2rem)] min-[550px]:w-[480px] bg-card dark:bg-background border-border/60"
                   align="end"
                   sideOffset={1}
                 >
@@ -497,7 +497,7 @@ export function DataTable<TData, TValue>({
             <>
               <div
                 ref={headerScrollRef}
-                className="overflow-x-auto overflow-y-hidden sticky z-30 bg-background shadow-sm border-b scrollbar-hide"
+                className="overflow-x-auto overflow-y-hidden sticky z-40 bg-secondary dark:bg-background shadow-sm border-b scrollbar-hide"
               >
                 <div className="min-w-[1200px]">
                   <Table noWrapper className="w-full table-fixed">
@@ -535,7 +535,7 @@ export function DataTable<TData, TValue>({
                             <TableRow
                               data-state={row.getIsSelected() && "selected"}
                               data-expanded={row.getIsExpanded()}
-                              className={`cursor-pointer transition-colors data-[expanded=true]:bg-slate-100 dark:data-[expanded=true]:bg-muted/30 ${newlyAddedOrderIds.has(row.id)
+                              className={`cursor-pointer transition-colors data-[expanded=true]:bg-accent/40 dark:data-[expanded=true]:bg-muted/30 ${newlyAddedOrderIds.has(row.id)
                                 ? newlyAddedOrderIds.get(row.id) === 2
                                   ? "animate-flash-buy"
                                   : "animate-flash-sell"
@@ -606,7 +606,7 @@ export function DataTable<TData, TValue>({
             <Table noWrapper className="w-full table-fixed">
               <TableHeader
                 ref={tableHeaderRef as any}
-                className="sticky z-30 bg-background shadow-sm border-b"
+                className="sticky z-40 bg-secondary dark:bg-background shadow-sm border-b"
               >
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow key={headerGroup.id}>
@@ -635,7 +635,7 @@ export function DataTable<TData, TValue>({
                       <TableRow
                         data-state={row.getIsSelected() && "selected"}
                         data-expanded={row.getIsExpanded()}
-                        className={`cursor-pointer transition-colors data-[expanded=true]:bg-slate-100 dark:data-[expanded=true]:bg-muted/30 ${newlyAddedOrderIds.has(row.id)
+                        className={`cursor-pointer transition-colors data-[expanded=true]:bg-accent/40 dark:data-[expanded=true]:bg-muted/30 ${newlyAddedOrderIds.has(row.id)
                           ? newlyAddedOrderIds.get(row.id) === 2
                             ? "animate-flash-buy"
                             : "animate-flash-sell"
@@ -703,7 +703,7 @@ export function DataTable<TData, TValue>({
         </CardContent>
       </Card>
 
-      <div className="flex items-center justify-end space-x-2 rounded-b-md bg-white dark:bg-background mb-12">
+      <div className="flex items-center justify-end space-x-2 rounded-b-md bg-background dark:bg-background mb-12">
         <div className="text-xs text-muted-foreground">
           Showing {table.getRowModel().rows.length} rows
         </div>

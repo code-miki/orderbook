@@ -53,25 +53,25 @@
   }
 
   .light {
-    /* Light theme */
-    --background: 0 0% 97%;
-    --foreground: 207 23% 15%;
+    /* Beautiful modern light theme - warm and inviting */
+    --background: 240 10% 98.5%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 207 23% 15%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 207 23% 15%;
+    --popover-foreground: 222 47% 11%;
     --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 207 10% 96%;
-    --secondary-foreground: 207 23% 15%;
-    --muted: 207 10% 96%;
-    --muted-foreground: 207 10% 45%;
-    --accent: 207 10% 96%;
-    --accent-foreground: 207 23% 15%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 220 13% 91%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 217 33% 92%;
+    --accent-foreground: 222 47% 11%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 207 10% 90%;
-    --input: 207 10% 90%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
     --ring: 217 91% 60%;
   }
 }
