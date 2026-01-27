@@ -53,25 +53,25 @@
   }
 
   .light {
-    /* Beautiful modern light theme - warm and inviting */
-    --background: 240 10% 98.5%;
-    --foreground: 222 47% 11%;
+    /* Light theme */
+    --background: 0 0% 97%;
+    --foreground: 207 23% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 207 23% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 207 23% 15%;
     --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 222 47% 11%;
-    --muted: 220 13% 91%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 217 33% 92%;
-    --accent-foreground: 222 47% 11%;
+    --secondary: 207 10% 96%;
+    --secondary-foreground: 207 23% 15%;
+    --muted: 207 10% 96%;
+    --muted-foreground: 207 10% 45%;
+    --accent: 207 10% 96%;
+    --accent-foreground: 207 23% 15%;
     --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 207 10% 90%;
+    --input: 207 10% 90%;
     --ring: 217 91% 60%;
   }
 }
@@ -318,43 +318,26 @@ button[name="next-month"] {
   }
 }
 
+@keyframes flash-pane-light {
+  0% {
+    background-color: rgb(59 130 246 / 0.4) !important;
+    /* bright blue with 40% opacity for light theme */
+    box-shadow: 0 0 20px rgb(59 130 246 / 0.2);
+  }
+
+  50% {
+    background-color: rgb(59 130 246 / 0.2) !important;
+    /* fade to 20% */
+    box-shadow: 0 0 10px rgb(59 130 246 / 0.1);
+  }
+
+  100% {
+    background-color: transparent !important;
+    box-shadow: none;
+  }
+}
+
 .animate-flash-pane {
   animation: flash-pane 1.5s ease-out;
   animation-fill-mode: both;
-}
-
-/* Button hover animations */
-@keyframes btn-pulse {
-  0%, 100% {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  }
-  50% {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  }
-}
-
-/* Enhanced button base styles */
-.btn-enhanced {
-  @apply transition-all duration-200 ease-out;
-  @apply shadow-sm hover:shadow-md active:shadow-sm;
-  @apply hover:-translate-y-0.5 active:translate-y-0;
-}
-
-.btn-primary-enhanced {
-  @apply bg-gradient-to-b from-blue-500 to-blue-600;
-  @apply hover:from-blue-500 hover:to-blue-700;
-  @apply shadow-[0_4px_14px_0_rgba(37,99,235,0.3)];
-  @apply hover:shadow-[0_6px_20px_0_rgba(37,99,235,0.4)];
-}
-
-.btn-outline-enhanced {
-  @apply border-border/60 bg-background/80 backdrop-blur-sm;
-  @apply hover:bg-accent hover:border-border;
-  @apply shadow-sm hover:shadow-md;
-}
-
-/* Table header prominence */
-.table-header-enhanced {
-  @apply text-xs font-bold uppercase tracking-widest text-foreground/80;
-  @apply border-b-2 border-primary/20;
 }
