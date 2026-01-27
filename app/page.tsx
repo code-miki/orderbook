@@ -439,7 +439,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <div className="container mx-auto px-4 max-w-7xl pt-4">
-        <header className="mb-6 border-b border-border/40 sticky top-0 z-50 bg-background h-[88px] flex items-center">
+        <header className="mb-6 border-b border-border/40 sticky top-0 z-50 bg-background h-[105.2px] pt-8 pb-6 flex items-center">
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-4">
               <div className="p-2.5 rounded-xl bg-primary/10 border border-primary/20 shadow-sm">
@@ -527,7 +527,7 @@ export default function Home() {
             <DialogHeader>
               <DialogTitle>Connect Wallet Required</DialogTitle>
               <DialogDescription>
-              Please connect your wallet to view your orders. Click the &quot;Wallet&quot; button to connect.
+                Please connect your wallet to view your orders. Click the "Wallet" button to connect.
               </DialogDescription>
             </DialogHeader>
             <DialogFooter>
