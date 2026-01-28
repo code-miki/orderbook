@@ -50,6 +50,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 
@@ -62,6 +68,7 @@ interface OrderBookRowDetailsProps {
   onCancelOrder?: (uuid: string) => void;
   onFillOrder?: () => void;
   apiUrl?: string;
+  walletAddress?: string;
 }
 
 export function OrderBookRowDetails({
@@ -73,7 +80,9 @@ export function OrderBookRowDetails({
   onCancelOrder,
   onFillOrder,
   apiUrl,
+  walletAddress,
 }: OrderBookRowDetailsProps) {
+  const isOwner = !!(walletAddress && order.origin === walletAddress);
   const [copiedWalletId, setCopiedWalletId] = React.useState(false);
   const [copiedEscrowId, setCopiedEscrowId] = React.useState(false);
   const [copiedFilledEscrowIds, setCopiedFilledEscrowIds] = React.useState<
@@ -197,7 +206,7 @@ export function OrderBookRowDetails({
   };
 
   return (
-    <div className="bg-muted/30 p-6 space-y-6 shadow-inner border-t border-border/50">
+    <div className="bg-slate-50 dark:bg-muted/30 p-6 space-y-6 shadow-inner border-t border-slate-200 dark:border-border/50">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <h3 className="text-lg font-bold tracking-tight text-foreground">
@@ -213,7 +222,8 @@ export function OrderBookRowDetails({
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-9 gap-2"
+                    className="h-9 gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={!walletAddress}
                   >
                     <Edit2 className="h-3.5 w-3.5" />
                     Modify
@@ -389,8 +399,9 @@ export function OrderBookRowDetails({
               <Button
                 variant="outline"
                 size="sm"
-                className="h-9 gap-2 text-destructive border-destructive/30 hover:bg-destructive/10 hover:border-destructive/50"
+                className="h-9 gap-2 text-destructive border-destructive/30 hover:bg-destructive/10 hover:border-destructive/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:border-destructive/30"
                 onClick={() => setIsCloseConfirmOpen(true)}
+                disabled={!walletAddress}
               >
                 <X className="h-3.5 w-3.5" />
                 Close Order
@@ -447,7 +458,7 @@ export function OrderBookRowDetails({
       <div className="space-y-4">
         <div
           ref={paneRef}
-          className="p-4 rounded-lg border border-border/50 space-y-4"
+          className="p-4 rounded-lg border border-slate-200 dark:border-border/50 bg-white dark:bg-transparent space-y-4"
         >
           <div className="flex justify-between gap-4 grid grid-cols-2">
             {order.wallet && (
@@ -457,7 +468,7 @@ export function OrderBookRowDetails({
                 </span>
                 <div className="flex items-center gap-2">
                   <code
-                    className="font-mono text-sm px-3 py-2 bg-muted/50 rounded-md border border-border/50 text-foreground break-all"
+                    className="font-mono text-sm px-3 py-2 bg-slate-100 dark:bg-muted/50 rounded-md border border-slate-200 dark:border-border/50 text-slate-900 dark:text-foreground break-all"
                   >
                     {order.wallet}
                   </code>
@@ -478,39 +489,39 @@ export function OrderBookRowDetails({
             )}
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-5">
-            <div className="flex flex-col gap-1.5 p-3 rounded-md bg-muted/30 border border-border/40">
-              <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-muted-foreground/80">
+            <div className="flex flex-col gap-1.5 p-3 rounded-md bg-slate-100 dark:bg-muted/30 border border-slate-200 dark:border-border/40">
+              <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-slate-500 dark:text-muted-foreground/80">
                 Stop Price
               </span>
-              <span className="font-mono text-base font-semibold text-foreground">
+              <span className="font-mono text-base font-semibold text-slate-900 dark:text-foreground">
                 {order.stp > 0 ? formatPrice(order.stp) : "—"}
               </span>
             </div>
-            <div className="flex flex-col gap-1.5 p-3 rounded-md bg-muted/30 border border-border/40">
-              <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-muted-foreground/80">
+            <div className="flex flex-col gap-1.5 p-3 rounded-md bg-slate-100 dark:bg-muted/30 border border-slate-200 dark:border-border/40">
+              <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-slate-500 dark:text-muted-foreground/80">
                 Public
               </span>
-              <span className={`text-base font-semibold ${order.public ? "text-emerald-600 dark:text-emerald-400" : "text-muted-foreground"}`}>
+              <span className={`text-base font-semibold ${order.public ? "text-emerald-600 dark:text-emerald-400" : "text-slate-400 dark:text-muted-foreground"}`}>
                 {order.public ? "Yes" : "No"}
               </span>
             </div>
-            <div className="flex flex-col gap-1.5 p-3 rounded-md bg-muted/30 border border-border/40">
-              <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-muted-foreground/80">
+            <div className="flex flex-col gap-1.5 p-3 rounded-md bg-slate-100 dark:bg-muted/30 border border-slate-200 dark:border-border/40">
+              <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-slate-500 dark:text-muted-foreground/80">
                 Good Till Date
               </span>
-              <span className="font-mono text-base font-semibold text-foreground">
+              <span className="font-mono text-base font-semibold text-slate-900 dark:text-foreground">
                 {order.gtd && order.gtd.toLowerCase() === "gtc"
                   ? "2026-01-31 UTC"
                   : order.gtd
-                  ? formatDateOnly(order.gtd)
-                  : "—"}
+                    ? formatDateOnly(order.gtd)
+                    : "—"}
               </span>
             </div>
-            <div className="flex flex-col gap-1.5 p-3 rounded-md bg-muted/30 border border-border/40">
-              <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-muted-foreground/80">
+            <div className="flex flex-col gap-1.5 p-3 rounded-md bg-slate-100 dark:bg-muted/30 border border-slate-200 dark:border-border/40">
+              <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-slate-500 dark:text-muted-foreground/80">
                 Partial
               </span>
-              <span className={`text-base font-semibold ${order.partial ? "text-emerald-600 dark:text-emerald-400" : "text-muted-foreground"}`}>
+              <span className={`text-base font-semibold ${order.partial ? "text-emerald-600 dark:text-emerald-400" : "text-slate-400 dark:text-muted-foreground"}`}>
                 {order.partial ? "Yes" : "No"}
               </span>
             </div>
@@ -533,9 +544,8 @@ export function OrderBookRowDetails({
 
                     const displayGtd = "";
 
-                    const filledOrderId = `${filledOrder.uuid}-${
-                      filledOrder.status
-                    }-${filledOrder.escrow || ""}`;
+                    const filledOrderId = `${filledOrder.uuid}-${filledOrder.status
+                      }-${filledOrder.escrow || ""}`;
                     const shouldFlash = newlyAddedOrderIds.has(filledOrderId);
                     const filledOrderType =
                       newlyAddedOrderIds.get(filledOrderId);
@@ -602,11 +612,10 @@ export function OrderBookRowDetails({
                                   ? "outline"
                                   : "secondary"
                               }
-                              className={`font-medium ${
-                                orderTypeLabel === "Buy"
+                              className={`font-medium ${orderTypeLabel === "Buy"
                                   ? "text-emerald-600 border-emerald-200 bg-emerald-50 dark:bg-emerald-950/30 dark:border-emerald-800 dark:text-emerald-400"
                                   : "text-rose-600 border-rose-200 bg-rose-50 dark:bg-rose-950/30 dark:border-rose-800 dark:text-rose-400"
-                              }`}
+                                }`}
                             >
                               {orderTypeLabel}
                             </Badge>

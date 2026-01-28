@@ -53,26 +53,26 @@
   }
 
   .light {
-    /* Light theme */
-    --background: 0 0% 97%;
-    --foreground: 207 23% 15%;
+    /* Light theme - Clean, high-contrast design */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 207 23% 15%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 207 23% 15%;
-    --primary: 217 91% 60%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 217 91% 55%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 207 10% 96%;
-    --secondary-foreground: 207 23% 15%;
-    --muted: 207 10% 96%;
-    --muted-foreground: 207 10% 45%;
-    --accent: 207 10% 96%;
-    --accent-foreground: 207 23% 15%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 207 10% 90%;
-    --input: 207 10% 90%;
-    --ring: 217 91% 60%;
+    --secondary: 214 32% 95%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 214 32% 93%;
+    --muted-foreground: 215 25% 35%;
+    --accent: 214 32% 91%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 82%;
+    --input: 214 32% 82%;
+    --ring: 217 91% 55%;
   }
 }
 
@@ -340,4 +340,28 @@ button[name="next-month"] {
 .animate-flash-pane {
   animation: flash-pane 1.5s ease-out;
   animation-fill-mode: both;
+}
+
+.light .animate-flash-pane {
+  animation: flash-pane-light 1.5s ease-out;
+  animation-fill-mode: both;
+}
+
+/* Light theme specific enhancements */
+.light {
+  /* Enhanced shadow for cards in light mode */
+  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+/* Light theme table and card enhancements */
+.light .smooth-scroll::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+.light .smooth-scroll::-webkit-scrollbar-thumb {
+  @apply bg-slate-300;
+}
+
+.light .smooth-scroll::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400;
 }

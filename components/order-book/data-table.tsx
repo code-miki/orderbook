@@ -300,7 +300,7 @@ export function DataTable<TData, TValue>({
       <Card className="w-full border-border/60 shadow-sm bg-card/50 backdrop-blur-sm mb-3">
         <CardHeader
           ref={cardHeaderRef as any}
-          className="sticky top-[105.2px] z-30 rounded-t-md bg-secondary dark:bg-background h-[93.07px] pt-6 px-6 pb-4 shadow-[0_2px_4px_rgba(0,0,0,0.06)] dark:shadow-sm"
+          className="sticky top-[105.2px] z-30 rounded-t-md bg-slate-50 dark:bg-background h-[93.07px] pt-6 px-6 pb-4 shadow-[0_1px_3px_rgba(0,0,0,0.08)] dark:shadow-sm border-b border-slate-200/80 dark:border-border/40"
         >
           <div className="flex items-center justify-between">
             <CardTitle className="text-xl font-bold tracking-tight text-foreground">
@@ -313,7 +313,7 @@ export function DataTable<TData, TValue>({
                 onOpenChange={setSearchPopoverOpen}
               >
                 <PopoverTrigger asChild>
-                  <Button variant="outline" size="sm" className="h-9 w-full min-[550px]:w-auto gap-2 bg-secondary/50 hover:bg-secondary border-border/60 dark:bg-background/80 dark:hover:bg-muted dark:border-border/60">
+                  <Button variant="outline" size="sm" className="h-9 w-full min-[550px]:w-auto gap-2 bg-white hover:bg-slate-50 border-slate-300 text-slate-700 dark:bg-background/80 dark:hover:bg-muted dark:border-border/60 dark:text-foreground">
                     <Search className="h-4 w-4" />
                     Search Order
                   </Button>
@@ -497,7 +497,7 @@ export function DataTable<TData, TValue>({
             <>
               <div
                 ref={headerScrollRef}
-                className="overflow-x-auto overflow-y-hidden sticky z-40 bg-secondary dark:bg-background shadow-sm border-b scrollbar-hide"
+                className="overflow-x-auto overflow-y-hidden sticky z-40 bg-slate-100 dark:bg-background shadow-sm border-b border-slate-200 dark:border-border scrollbar-hide"
               >
                 <div className="min-w-[1200px]">
                   <Table noWrapper className="w-full table-fixed">
@@ -606,7 +606,7 @@ export function DataTable<TData, TValue>({
             <Table noWrapper className="w-full table-fixed">
               <TableHeader
                 ref={tableHeaderRef as any}
-                className="sticky z-40 bg-secondary dark:bg-background shadow-sm border-b"
+                className="sticky z-40 bg-slate-100 dark:bg-background shadow-sm border-b border-slate-200 dark:border-border"
               >
                 {table.getHeaderGroups().map((headerGroup) => (
                   <TableRow key={headerGroup.id}>

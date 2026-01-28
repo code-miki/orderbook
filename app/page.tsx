@@ -450,7 +450,7 @@ export default function Home() {
                   <h1 className="text-[28px] font-extrabold tracking-tight text-foreground">
                     HODL Exchange
                   </h1>
-                  <div className="flex items-center gap-2 px-3 mt-2 py-1.5 rounded-[6px] border border-border/60 bg-card/50 shadow-sm">
+                  <div className="flex items-center gap-2 px-3 mt-2 py-1.5 rounded-[6px] border border-slate-200 dark:border-border/60 bg-white dark:bg-card/50 shadow-sm">
                     {connectionState === "connected" ? (
                       <>
                         <Wifi className="h-3.5 w-3.5 text-emerald-500" />
@@ -514,6 +514,7 @@ export default function Home() {
           onNewOrder={() => setNewOrderModalOpen(true)}
           apiUrl={API_URL}
           showMyOrdersOnly={showMyOrdersOnly}
+          walletAddress={selectedAccount?.address}
         />
 
         <NewOrderModal
