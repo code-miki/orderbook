@@ -437,12 +437,12 @@ export default function Home() {
   }, [orders, openOrders, showMyOrdersOnly, selectedAccount?.address]);
 
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-white dark:bg-background">
       <div className="container mx-auto px-4 max-w-7xl pt-4">
-        <header className="mb-6 border-b border-border/40 sticky top-0 z-50 bg-background h-[105.2px] pt-8 pb-6 flex items-center">
+        <header className="mb-6 border-b border-slate-200 dark:border-border/40 sticky top-0 z-50 bg-white dark:bg-background h-[105.2px] pt-8 pb-6 flex items-center">
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-4">
-              <div className="p-2.5 rounded-xl bg-primary/10 border border-primary/20 shadow-sm">
+              <div className="p-2.5 rounded-xl bg-blue-50 dark:bg-primary/10 border border-blue-100 dark:border-primary/20 dark:shadow-sm">
                 <Activity className="h-6 w-6 text-primary" />
               </div>
               <div>
@@ -489,10 +489,10 @@ export default function Home() {
                 variant="outline"
                 size="sm"
                 onClick={handleMyOrdersClick}
-                className={`h-9 gap-2 ${showMyOrdersOnly 
-                  ? "bg-gradient-to-b from-blue-500 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-semibold border-blue-500/50 shadow-[0_4px_14px_0_rgba(37,99,235,0.3)]" 
+                className={`h-9 gap-2 ${showMyOrdersOnly
+                  ? "bg-gradient-to-b from-blue-500 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white font-semibold border-blue-500/50 shadow-[0_4px_14px_0_rgba(37,99,235,0.3)]"
                   : ""
-                }`}
+                  }`}
               >
                 <List className="h-4 w-4" />
                 <span className="hidden sm:inline">My Orders</span>
