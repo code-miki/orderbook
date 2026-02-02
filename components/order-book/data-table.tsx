@@ -24,6 +24,7 @@ import {
   TableHead as TableHeadCell,
 } from "@/components/ui/table";
 
+import { ConnectionState } from "@/lib/websocket-types";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -62,7 +63,7 @@ interface DataTableProps<TData, TValue> {
   allOrdersForSearch?: TData[];
   walletAddress?: string;
   showMyOrdersOnly?: boolean;
-  connectionState?: "connected" | "connecting" | "disconnected";
+  connectionState?: ConnectionState;
 }
 
 export function DataTable<TData, TValue>({
@@ -324,6 +325,13 @@ export function DataTable<TData, TValue>({
                     <Wifi className="h-3.5 w-3.5 text-amber-500 animate-pulse" />
                     <span className="text-[11px] font-semibold uppercase tracking-wide text-amber-600 dark:text-amber-400 hidden md:inline">
                       Connecting...
+                    </span>
+                  </>
+                ) : connectionState === "error" ? (
+                  <>
+                    <WifiOff className="h-3.5 w-3.5 text-red-500" />
+                    <span className="text-[11px] font-semibold uppercase tracking-wide text-red-600 dark:text-red-400 hidden md:inline">
+                      Error
                     </span>
                   </>
                 ) : (

@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Order } from "@/lib/types";
+import { ConnectionState } from "@/lib/websocket-types";
 import { DataTable } from "./data-table";
 import { columns } from "./columns";
 import { OrderBookRowDetails } from "./row-details";
@@ -19,7 +20,7 @@ interface OrderBookProps {
   allOrdersForSearch?: Order[];
   showMyOrdersOnly?: boolean;
   walletAddress?: string;
-  connectionState?: "connected" | "connecting" | "disconnected";
+  connectionState?: ConnectionState;
 }
 
 export function OrderBook({
