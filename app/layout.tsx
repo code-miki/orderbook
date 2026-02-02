@@ -5,8 +5,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 import ContextProvider from '@/context'
 
 const inter = Inter({ subsets: ["latin"] })
-const pressStart2P = Press_Start_2P({ 
-  weight: "400", 
+const pressStart2P = Press_Start_2P({
+  weight: "400",
   subsets: ["latin"],
   variable: "--font-pixel"
 })
